@@ -47,13 +47,14 @@ public function edit(proo $post){
      
 }
 public function update( proo $post , CreatePostRequest $request){
- $post->update(
+ /*$post->update(
     [
         'title'=>$request->input('title'),
         'content'=>$request->input('content')
     ]
-    );
- //$post->update($request->validated());
+    );*/
+ $post->update($request->validated());
+ //the second change
 }
 }
 
