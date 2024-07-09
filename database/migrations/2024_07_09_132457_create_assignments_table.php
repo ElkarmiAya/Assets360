@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
             $table->date('assignment_date');
-            $table->date('decommissioning_date');
+            $table->date('decommissioning_date')->nullable();
+            $table->integer('demandeur');
+            $table->integer('validateur');
+            $table->integer('stockasset_id');
             $table->foreign('demandeur')->references('id')->on('collaboraters');
             $table->foreign('validateur')->references('id')->on('collaboraters');
             $table->foreign('stockasset_id')->references('id')->on('assets_stocks');

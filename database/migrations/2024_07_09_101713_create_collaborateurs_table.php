@@ -22,6 +22,10 @@ return new class extends Migration
             $table->date('workstartdate');
             $table->date('workenddate')->nullable();
             $table->string('Adress',255);
+            
+            $table->integer('workjob_id');
+
+
             $table->foreign('workjob_id')->references('id')->on('workjobs');
 
        });

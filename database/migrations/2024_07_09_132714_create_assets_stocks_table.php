@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('code',50);
             $table->tinyInteger('situation')->default(0);
             $table->string('serial_number',100);
+            $table->integer('asset_id');
+            $table->integer('entry_id');
             $table->foreign('asset_id')->references('id')->on('assets');
             $table->foreign('entry_id')->references('id')->on('entries');
 

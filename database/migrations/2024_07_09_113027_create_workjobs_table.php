@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('workjobs', function (Blueprint $table) {
             $table->id();
             $table->string('Name',45);
+            $table->integer('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
         });
     }

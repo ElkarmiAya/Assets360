@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('Password');
             $table->boolean('Active')->default(true);//a verifier
             $table->timestamp('email_verified_at')->nullable();
+            $table->integer('collaborater_id');
+            $table->integer('role_id');
             $table->foreign('collaborater_id')->references('id')->on('collaborater');
             $table->foreign('role_id')->references('id')->on('role');
         });

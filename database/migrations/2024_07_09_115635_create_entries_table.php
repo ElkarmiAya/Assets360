@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->integer('Quantity');
             $table->date('entry_date');
+            $table->integer('asset_id');
+            $table->integer('provider_id');
             $table->foreign('asset_id')->references('id')->on('assets');
             $table->foreign('provider_id')->references('id')->on('providers');
 
