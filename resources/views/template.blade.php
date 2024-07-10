@@ -33,13 +33,36 @@
     </div>
   </div>
 </nav>
+<div>
+    @auth
+    <form class="nav-item" action="{{ route('auth.logout') }}" method="POST">
+      @method('DELETE')
+      @csrf
+      <button type="submit" class="btn btn-link nav-link">
+        Se déconnecter
+      </button>
+    </form>
+    @endauth
+  </div>
+<div >
+  @auth 
+  {{\Illuminate\Support\Facades\Auth::user()->name }}
+  @endauth
+
+  @guest
+    <a href=" {{ route('auth.login')}}  ">se connecter</a>
+  @endguest
+</div>
+{{-- 
 <div class="container">
       @if(session('success'))
       <div class='alert alert-success'>
            {{session('success')}}
       </div>
       @endif
-    </div>
+</div>
+
+--}}
     <container>
         @yield('content')
     </container>

@@ -9,11 +9,33 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\User;
 
 class blogcontroller extends Controller
-{
-public function index(blogFillterRequest $request):View{
+{ /*public function index(){
+   User::create([
+      'name'=>'john',
+      'email'=>'john@gmail.com',
+       'password'=>Hash::make('1234')
+   ]);
+}*/
+
+   public function indexx(){
+      return view('blog.create2');
+   }
+    public function store(Request $request){
+      $post= proo :: create([
+         'title'=>$request->input('title'),
+         'content'=>$request->input('content')
+      ]);
+      $p=proo :: where('title',$request->input ('title'))->Firstorfail();
+      return response()->json(['id' => $p->id]);
+            dd($request->all());
+    }
+   }
+/*public function index(blogFillterRequest $request):View{
 
         $proo=proo::paginate(2);
          return View ('blog.index',['posts'=> $proo]) ;
@@ -52,9 +74,9 @@ public function update( proo $post , CreatePostRequest $request){
         'title'=>$request->input('title'),
         'content'=>$request->input('content')
     ]
-    );*/
+    );
  $post->update($request->validated());
  //the second change
-}
-}
+}*/
+
 

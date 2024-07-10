@@ -1,11 +1,25 @@
 <?php
+use \App\Http\Controllers\AuthController;
 use \App\Http\Controllers\blogcontroller;
 use illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('auth.login');
+Route::post('/login',[\App\Http\Controllers\AuthController::class,'dologin']);
+Route::delete('/logout',[\App\Http\Controllers\AuthController::class,'logout'])->name('auth.logout');
+Route::prefix('/')->controller(blogcontroller::class)->group(function(){
+         Route::get('acceuil','indexx')->name('acceuil');
+
+        Route::get('first','entrerarticle');
+        Route::post('first','store');
+
+
+});
 //Route::prefix('/blog')->name('blog.')->group(function(){});
 
-Route::prefix('/blog')->controller(blogcontroller::class)->group(function(){
+ /*Route::prefix('/blog')->controller(blogcontroller::class)->group(function(){
 
     Route::get('proo','index')->name('blog.show');
 
@@ -35,7 +49,7 @@ Route::post('{post}/edit','update');
         $post= \app\Models\Post::paginate(12);
         /*dd($post);
         return $post;
-        
+        /*
     });
      Route::get('/{slug}-{id}', function (string $slug ,string $id ) {
          return "voici la recette:";
